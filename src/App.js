@@ -7,6 +7,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useTetris } from './useTetris';
 import { COLS, ROWS, BLOCK_SIZE, COLORS } from './constants';
 
+const StatBox = ({ label, value, colorClass = "" }) => (
+  <div className="bg-[#1e293b] border border-[#334155] rounded-lg p-4 mb-4">
+    <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">{label}</div>
+    <div className={`text-3xl font-mono font-bold leading-none tabular-nums ${colorClass}`}>
+      {value.toString().padStart(6, '0')}
+    </div>
+  </div>
+);
+
 export default function App() {
   const {
     board,
@@ -77,7 +86,6 @@ export default function App() {
   };
 
   const renderNextPiece = () => {
-    // 4x2 or 4x4 grid for next piece
     return (
       <div className="grid grid-cols-4 grid-rows-2 gap-[2px] w-20 h-10">
         {nextPiece.shape.slice(0, 2).map((row, y) =>
@@ -98,19 +106,9 @@ export default function App() {
     );
   };
 
-  const StatBox = ({ label, value, colorClass = "" }) => (
-    <div className="bg-[#1e293b] border border-[#334155] rounded-lg p-4 mb-4">
-      <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">{label}</div>
-      <div className={`text-3xl font-mono font-bold leading-none tabular-nums ${colorClass}`}>
-        {value.toString().padStart(6, '0')}
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-100 flex items-center justify-center font-sans overflow-hidden p-4 selection:bg-cyan-500/30">
       
-      {/* Background Subtle Gradient */}
       <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,_rgba(30,41,59,1)_0%,_rgba(15,23,42,1)_100%)]" />
 
       <div className="relative flex flex-col md:flex-row gap-12 items-start z-10 transition-all duration-500">

@@ -1,0 +1,6 @@
+{
+  "name": "Neon Tetris",
+  "description": "A polished, retro-modern Tetris game with smooth animations, ghost pieces, and high scores.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
